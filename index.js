@@ -3,6 +3,7 @@ const hapi = require('./lib/hapi')
 const express = require('./lib/express')
 const restify = require('./lib/restify')
 const http = require('./lib/http')
+const metrics = require('./lib/metrics')
 
 function instrument (app, options) {
   options = defaults(options)
@@ -19,5 +20,6 @@ function instrument (app, options) {
 }
 
 module.exports = {
-  instrument: instrument
+  instrument: instrument,
+  getClient: () => metrics.client
 }
